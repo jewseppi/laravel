@@ -1,0 +1,35 @@
+hr {
+    margin: 1em 0;
+}
+
+.mb-1 {
+    margin-bottom: 1em;
+}
+
+.mb-6 {
+    margin-bottom: 0.6em;
+}
+
+.default {
+    background: aliceblue;
+}
+
+.panel-title .panel-title__custom {
+    margin: 0;
+    color: #3097D1;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.panel-collapse h4,
+.navbar-right, .navbar-right a {
+    font-size: 16px;
+}
+
+#is_default{
+    margin-left: 0.3em;
+}
+
+.clear {
+    clear: both;
+}
