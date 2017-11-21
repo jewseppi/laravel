@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+//use Laravel\Dusk\DuskServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+      /*
+       * @todo Dusk unit tests conflicted with XAMPP environment
+       *
+        if ($this->app->environment('local')) {
+          $this->app->register(DuskServiceProvider::class);
+        }
+      */
     }
 }
