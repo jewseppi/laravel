@@ -19,7 +19,7 @@ class EmailsController extends Controller
      */
     public function index()
     {
-        $emails = Email::where('user_id', '=', auth()->user()->id)->paginate(5);
+        $emails = Email::where('user_id', '=', auth()->user()->id)->paginate(3);
         return view('emails.index')->with('emails', $emails);
     }
 
@@ -47,7 +47,7 @@ class EmailsController extends Controller
       ]);
 
       $user_id = auth()->user()->id;
-      $email_address = $request->input('email_address');
+      $email_address = strtolower($request->input('email_address'));
       $is_default = $request->input('is_default');
 
       DB::beginTransaction();
@@ -59,10 +59,29 @@ class EmailsController extends Controller
           ->first();
 
         if ($email_id) {
+          $record = Email::find($email_id);
+
           try {
-            $record = Email::find($email_id);
             $record->is_default = 0;
             $record->save();
+          } catch(ValidationException $e)
+
+          {
+            DB::rollback();
+            return Redirect::to('/emails/create')
+              ->withErrors( $e->getErrors() )
+              ->withInput();
+          } catch(\Exception $e)
+
+          {
+            DB::rollback();
+            throw $e;
+          }
+
+          try {
+            $user = User::find($record->user_id);
+            $user->email = $email_address;
+            $user->save();
           } catch(ValidationException $e)
 
           {
@@ -139,7 +158,7 @@ class EmailsController extends Controller
     {
         $email = Email::find($id);
         $address = $email->email_address;
-        $email_address = $request->input('email_address');
+        $email_address = strtolower($request->input('email_address'));
         $attribute = $address == $email_address  ? '' : '|unique:emails';
 
         $this->validate($request, [

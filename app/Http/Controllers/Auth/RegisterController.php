@@ -74,7 +74,7 @@ class RegisterController extends Controller
 
     $first_name = $data['first_name'];
     $last_name = $data['last_name'];
-    $email_address = $data['email'];
+    $email_address = strtolower($data['email']);
 
     DB::beginTransaction();
 

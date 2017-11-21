@@ -6,13 +6,20 @@
     </div>
 
     <div class="panel-body">
+        @php
+            $shares = [
+                'Preferred' => 'Preferred',
+                'A' => 'A',
+                'B' => 'B' ];
+        @endphp
+
         {!! Form::open(['action' => 'PurchasesController@store', 'method' => 'POST']) !!}
             <div class="form-group">
                 {{Form::label('company_name', 'Company Name')}}
                 {{Form::text('company_name', '', ['class' => 'form-control mb-6', 'placeholder' => 'Company'])}}
 
                 {{Form::label('share_name', 'Share Name')}}
-                {{Form::text('share_name', '', ['class' => 'form-control mb-6', 'placeholder' => 'A, B or Preferred'])}}
+                {{Form::select('share_name', $shares, 0, ['class' => 'form-control mb-6', 'placeholder' => 'choose a share type'])}}
 
                 {{Form::label('price', 'Price')}}
                 {{Form::text('price', '', ['class' => 'form-control mb-6', 'placeholder' => ''])}}

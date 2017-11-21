@@ -13,16 +13,17 @@
                         <div class="pull-left" style="margin:0;">{{$purchase->company_name}}</div>
                         <div class="pull-right">
                             <a href="{{action("PurchasesController@show", ['id' => $purchase->id]) }}">
-                                {{$purchase->total_investment}}
+                                ${{number_format($purchase->total_investment, 2, '.', ',')}}
                             </a>
                         </div>
                         <div class="clear"></div>
                     </h4>
                     <hr>
                     <div id="collapse-{{$purchase->id}}" class="panel-collapse collapse">
-                        <h4>{{$purchase->share_name}}</h4>
-                        <h4>{{$purchase->price}}</h4>
-                        <h4>{{$purchase->quantity}}</h4>
+                        <h4>Share Type: {{$purchase->share_name}}</h4>
+                        <h4>Price: ${{$purchase->price}}</h4>
+                        <h4>Qty: {{$purchase->quantity}}</h4>
+                        <h4>Total: ${{$purchase->total_investment}}</h4>
                         <hr>
                         <h5 class="pull-left" style="margin:0;"> Purchased on {{$purchase->created_at->format('Y-m-d')}}</h5>
                         <h5 class="pull-right" style="margin:0;">Certificate: {{$purchase->certificate_number}}</h5>

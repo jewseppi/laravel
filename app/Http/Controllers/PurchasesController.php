@@ -149,6 +149,10 @@ class PurchasesController extends Controller
           $purchase = Purchase::find($id);
           $purchase->price = round($price, 10);
           $purchase->quantity = $quantity;
+
+          // @todo remove to update total_investment
+          // $purchase->total_investment = $price * $quantity;
+
           $purchase->save();
         } catch(ValidationException $e)
 

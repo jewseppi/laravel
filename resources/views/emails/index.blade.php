@@ -34,10 +34,11 @@
                 <a href="{{action("EmailsController@edit", ['id' => $email->id]) }}" class="btn btn-default">Edit</a>
 
                 {!!Form::open(['action' => ['EmailsController@destroy', $email->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                {{Form::hidden('_method', 'DELETE')}}
-                {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                    {{Form::hidden('_method', 'DELETE')}}
+                    {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
                 {!!Form::close()!!}
             </div>
         @endforeach
+        {{ $emails->render() }}
     </div>
 @endsection
