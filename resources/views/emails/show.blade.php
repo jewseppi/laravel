@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="panel-heading">
-        <h1>{{$email->email_address}}</h1>
+    <div class="panel-heading" style="background: aliceblue; color: darkslateblue;">
+        <h2>{{$email->email_address}}</h2>
     </div>
     <div class="panel-body">
         <h4>Default: {{$email->is_default}}</h4>
 
         <br>
-        <h6>Updated on {{$email->updated_at->format('Y-m-d')}}</h6>
-        <h6>Created on {{$email->created_at->format('Y-m-d')}}</h6>
+        <h5>Updated on {{$email->updated_at->format('Y-m-d')}}</h5>
+        <h5>Created on {{$email->created_at->format('Y-m-d')}}</h5>
         <hr>
 
         <a href="{{action("EmailsController@edit", ['id' => $email->id]) }}" class="btn btn-default">Edit</a>

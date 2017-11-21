@@ -1,19 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="panel-heading">
-        <h1>{{$purchase->company_name}}</h1>
-        <h3>{{$purchase->share_name}}</h3>
+    <div class="panel-heading" style="background: aliceblue; color: darkslateblue;">
+        <h2 class="pull-left">{{$purchase->company_name}}</h2>
+        <h2 class="pull-right">{{$purchase->share_name}}</h2>
+        <div class="clear mb-1"></div>
     </div>
     <div class="panel-body">
-        <h4>{{$purchase->price}}</h4>
-        <h4>{{$purchase->quantity}}</h4>
-        <h4>{{$purchase->total_investment}}</h4>
+        <h4>Price: ${{$purchase->price}}</h4>
+        <h4>Qty: {{$purchase->quantity}}</h4>
+        <h4>Total: ${{$purchase->total_investment}}</h4>
 
         <br>
-        <h6>{{$purchase->certificate_number}}</h6>
-        <h6>Purchased on {{$purchase->created_at->format('Y-m-d')}}</h6>
         <hr>
+        <h5 class="pull-left" style="margin:0;"> Purchased on {{$purchase->created_at->format('Y-m-d')}}</h5>
+        <h5 class="pull-right" style="margin:0;">Certificate: {{$purchase->certificate_number}}</h5>
+        <div class="clear mb-1"></div>
 
         <a href="{{action("PurchasesController@edit", ['id' => $purchase->id]) }}" class="btn btn-default">Edit</a>
         <a href="{{action("PurchasesController@index")}}" class="btn btn-default">Go Back</a>
