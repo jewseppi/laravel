@@ -20,15 +20,15 @@
       <!-- Left Side Of Navbar -->
       <ul class="nav navbar-nav">
         <li>
+            <a href="{{ action('EmailsController@index') }}" class="navbar-brand">
+                <i class="fa fa-envelope" title="Emails Accounts"></i>
+            </a>
+        </li>
+        <li>
             <a href="{{ action('PurchasesController@index') }}" class="navbar-brand">
                 <i class="fa fa-shopping-cart" title="View Purchases"></i>
             </a>
         </li>
-        <li>
-            <a href="{{ action('EmailsController@index') }}" class="navbar-brand">
-                <i class="fa fa-envelope" title="Emails Accounts"></i>
-            </a>
-       </li>
       </ul>
 
       <!-- Right Side Of Navbar -->

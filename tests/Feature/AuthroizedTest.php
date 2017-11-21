@@ -15,7 +15,7 @@ class AuthroizedTest extends TestCase
 
     public function testLoggedIn()
     {
-      $user = factory('App\User')->create();
+      $user = factory('App\User')->make();
 
       $this->actingAs($user)
         ->visit('/purchases')
